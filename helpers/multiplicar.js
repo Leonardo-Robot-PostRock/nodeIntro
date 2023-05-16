@@ -1,4 +1,3 @@
-const { error } = require('node:console');
 const fs = require('node:fs');
 
 // const crearArchivo = (base = 5) => {
