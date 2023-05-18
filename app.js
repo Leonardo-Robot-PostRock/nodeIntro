@@ -8,5 +8,5 @@ console.clear()
 // const [, base = 5] = arg3.split('=');
 
 crearArchivo(argv.b, argv.l)
-    .then(nombreArchivo => console.log(nombreArchivo, 'creado'))
+    .then(nombreArchivo => console.log(nombreArchivo, 'creado'.info))
     .catch(err => console.log(err));
