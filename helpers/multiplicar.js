@@ -15,20 +15,30 @@ colors.setTheme({
 })
 
 const crearArchivo = async (base = 5, listar = false) => {
-    const header = `TABLA DEL: ${base}`.underline.gray.bgYellow;
+    const header = ` TABLA DEL ${colors.red(base)} `.gray.bgWhite;
     try {
         let salida = '';
 
         for (let i = 1; i <= 10; i++) {
-            total = `${base * i}`
-            margen = ' '.repeat(12.5)
-            salida += `${margen}${base} x ${i} = ${total}${margen}\n`;
+            total = base * i;
+            totalString = toString(total);
+            margen = ' '.repeat(14)
+            margen2 = ' '.repeat(13)
+            margen3 = ' '.repeat(12)
+            centrar = ' '.repeat(14)
+            if (total < 10 && i < 10) {
+                salida += `${centrar}` + `${margen}${base + '  x  '} ${i} = ${total}${margen}\n`.bgMagenta;
+            } else if (total >= 10 && i < 10) {
+                salida += `${centrar}` + `${margen}${base + '  x  '} ${i} = ${total}${margen2}\n`.bgMagenta;
+            } else {
+                salida += `${centrar}` + `${margen}${base + '  x  '} ${i} = ${total}${margen3}\n`.bgMagenta;
+            }
         };
 
         if (listar) {
-            console.log('='.repeat(36).rainbow);
-            console.log(`${margen}${header}${margen}`);
-            console.log('='.repeat(36).rainbow);
+            console.log(margen, '='.repeat(38).rainbow);
+            console.log(`${margen}${margen}${header}${margen}`);
+            console.log(margen, '='.repeat(38).rainbow);
             console.log(salida.debug);
         }
 
