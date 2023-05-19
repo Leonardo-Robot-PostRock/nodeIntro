@@ -22,8 +22,6 @@ const crearArchivo = async (base = 5, listar = false, hasta = 10) => {
 
         for (let i = 1; i <= hasta; i++) {
             total = `${base * i}`
-            totalString = toString(total);
-            margen = ' '.repeat(13)
             salida += `${base} x ${i} = ${base * i}\n`;
             consola += `${base} ${'x'.green} ${i} = ${total}\n`;
         };
