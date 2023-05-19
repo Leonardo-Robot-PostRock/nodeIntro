@@ -23,7 +23,7 @@ const crearArchivo = async (base = 5, listar = false, hasta = 10) => {
         for (let i = 1; i <= hasta; i++) {
             total = `${base * i}`
             salida += `${base} x ${i} = ${base * i}\n`;
-            consola += `${base} ${'x'.green} ${i} = ${total}\n`;
+            consola += `${base} ${'x'.green} ${i} ${'='.random} ${colors.random(total)}\n`;
         };
 
         if (listar) {
@@ -33,8 +33,8 @@ const crearArchivo = async (base = 5, listar = false, hasta = 10) => {
             console.log(consola.debug);
         }
 
-        fs.writeFileSync(`tabla-${base}.txt`, salida)
-        return `tabla-${base}.txt`.bgWhite.gray
+        fs.writeFileSync(`./salida/tabla-${base}.txt`, salida)
+        return `tabla-${base}.txt`.bgWhite.yellow
     } catch (error) {
         throw error.error;
     }
