@@ -14,32 +14,25 @@ colors.setTheme({
     error: 'red',
 })
 
-const crearArchivo = async (base = 5, listar = false) => {
-    const header = ` TABLA DEL ${colors.red(base)} `.gray.bgWhite;
+const crearArchivo = async (base = 5, listar = false, hasta = 10) => {
+    const header = ` TABLA DEL ${colors.red(base)} `.gray.bgYellow;
     try {
         let salida = '';
+        let consola = '';
 
-        for (let i = 1; i <= 10; i++) {
-            total = base * i;
+        for (let i = 1; i <= hasta; i++) {
+            total = `${base * i}`
             totalString = toString(total);
-            margen = ' '.repeat(14)
-            margen2 = ' '.repeat(13)
-            margen3 = ' '.repeat(12)
-            centrar = ' '.repeat(14)
-            if (total < 10 && i < 10) {
-                salida += `${centrar}` + `${margen}${base + '  x  '} ${i} = ${total}${margen}\n`.bgMagenta;
-            } else if (total >= 10 && i < 10) {
-                salida += `${centrar}` + `${margen}${base + '  x  '} ${i} = ${total}${margen2}\n`.bgMagenta;
-            } else {
-                salida += `${centrar}` + `${margen}${base + '  x  '} ${i} = ${total}${margen3}\n`.bgMagenta;
-            }
+            margen = ' '.repeat(13)
+            salida += `${base} x ${i} = ${base * i}\n`;
+            consola += `${base} ${'x'.green} ${i} = ${total}\n`;
         };
 
         if (listar) {
-            console.log(margen, '='.repeat(38).rainbow);
-            console.log(`${margen}${margen}${header}${margen}`);
-            console.log(margen, '='.repeat(38).rainbow);
-            console.log(salida.debug);
+            console.log('='.repeat(15).rainbow);
+            console.log(`${header}`);
+            console.log('='.repeat(15).rainbow);
+            console.log(consola.debug);
         }
 
         fs.writeFileSync(`tabla-${base}.txt`, salida)
